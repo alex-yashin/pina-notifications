@@ -4,6 +4,7 @@ use PHPUnit\Framework\TestCase;
 use PinaNotifications\Messages\Message;
 use PinaNotifications\Messages\MessageTemplate;
 use PinaNotifications\Recipients\PhoneRecipient;
+use PinaNotifications\Recipients\UserRecipient;
 use PinaNotifications\Transports\StackExampleTransport;
 use PinaNotifications\Transports\TransportRegistry;
 
@@ -31,6 +32,12 @@ class NotificationTest extends TestCase
         $recipient->notify($template->make(['name' => 'my darling']));
 
         $this->assertEquals($transport->pop()->getText(), 'Hello, my darling');
+        $this->assertNull($transport->pop());
+
+        $userRecipient = new UserRecipient(1);
+        $userRecipient->notify($message);
+
+        $this->assertEquals($transport->pop()->getText(), $text);
         $this->assertNull($transport->pop());
     }
 
