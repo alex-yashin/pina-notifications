@@ -14,7 +14,7 @@ class EmailRecipient implements RecipientInterface
         $this->email = $email;
     }
 
-    public function notify(Message $message)
+    public function notify(Message $message): bool
     {
         return TransportRegistry::get('email')->send($this->email, $message);
     }

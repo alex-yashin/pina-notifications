@@ -14,7 +14,7 @@ class PhoneRecipient implements RecipientInterface
         $this->phone = $phone;
     }
 
-     public function notify(Message $message)
+     public function notify(Message $message): bool
      {
          return TransportRegistry::get('phone')->send($this->phone, $message);
      }

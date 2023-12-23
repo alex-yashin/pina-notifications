@@ -16,7 +16,7 @@ class UserRecipient implements RecipientInterface
         $this->userId = $userId;
     }
 
-    public function notify(Message $message)
+    public function notify(Message $message): bool
     {
         $transports = $this->resolveTransports();
         foreach ($transports as $type => $transport) {
@@ -25,9 +25,10 @@ class UserRecipient implements RecipientInterface
                 continue;
             }
             if ($transport->send($address, $message)) {
-                break;
+                return true;
             }
         }
+        return false;
     }
 
     /**
