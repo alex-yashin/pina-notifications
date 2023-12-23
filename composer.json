@@ -1,0 +1,29 @@
+{
+  "name": "alex-yashin/pina-notifications",
+  "keywords": ["php"],
+  "license": "MIT",
+  "homepage": "https://github.com/alex-yashin/pina-notifications/",
+  "support": {
+    "issues": "https://github.com/alex-yashin/pina-notifications/issues",
+    "source": "https://github.com/alex-yashin/pina-notifications/"
+  },
+  "authors": [
+    {
+      "name": "Alex Yashin",
+      "email": "alex-yashin@ya.ru"
+    }
+  ],
+  "require": {
+    "php": ">=7.2",
+    "pinahq/framework": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "6.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "PinaNotifications\\": "src/"
+    }
+  },
+  "minimum-stability": "dev"
+}
