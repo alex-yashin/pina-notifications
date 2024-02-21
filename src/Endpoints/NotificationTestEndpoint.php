@@ -16,6 +16,7 @@ use PinaNotifications\Recipients\UserRecipient;
 use PinaNotifications\Messages\Message;
 use PinaNotifications\Transports\TransportRegistry;
 use PinaNotifications\Types\TransportType;
+use function Pina\__;
 
 class NotificationTestEndpoint extends Endpoint
 {
@@ -53,7 +54,9 @@ class NotificationTestEndpoint extends Endpoint
         $transport = $normalized['transport'];
         $address = $normalized['address'];
         if ($transport) {
-            TransportRegistry::get($transport)->send($address, $message);
+            if (!TransportRegistry::get($transport)->send($address, $message)) {
+                return Response::badRequest(__('Невозможно отправить сообщение'), 'address');
+            }
             return Response::ok();
         }
 
