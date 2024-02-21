@@ -5,9 +5,9 @@ namespace PinaNotifications\Messages;
 class Message
 {
 
-    protected string $title = '';
-    protected string $text = '';
-    protected string $link = '';
+    protected $title = '';
+    protected $text = '';
+    protected $link = '';
     public function __construct(string $title, string $text, string $link = '')
     {
         $this->title = $title;

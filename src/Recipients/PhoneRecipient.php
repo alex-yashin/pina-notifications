@@ -7,7 +7,7 @@ use PinaNotifications\Transports\TransportRegistry;
 
 class PhoneRecipient implements RecipientInterface
 {
-    protected string $phone = '';
+    protected $phone = '';
 
     public function __construct(string $phone)
     {

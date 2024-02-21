@@ -7,7 +7,7 @@ use PinaNotifications\Transports\TransportRegistry;
 
 class EmailRecipient implements RecipientInterface
 {
-    protected string $email = '';
+    protected $email = '';
 
     public function __construct(string $email)
     {
