@@ -2,13 +2,16 @@
 
 namespace PinaNotifications\Messages;
 
+use Pina\Http\Url;
+
 class Message
 {
 
-    protected string $title = '';
-    protected string $text = '';
-    protected string $link = '';
-    public function __construct(string $title, string $text, string $link = '')
+    protected $title = '';
+    protected $text = '';
+    protected $link;
+
+    public function __construct(string $title, string $text, Url $link = null)
     {
         $this->title = $title;
         $this->text = $text;
@@ -25,9 +28,9 @@ class Message
         return $this->text;
     }
 
-    public function getLink(): string
+    public function getLink(): Url
     {
-        return $this->link;
+        return $this->link ?? new Url('');
     }
 
     public function __toString()
