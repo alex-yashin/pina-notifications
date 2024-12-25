@@ -78,10 +78,10 @@ class NotificationTest extends TestCase
         $this->assertEquals(strval($transport->pop()->getLink()), 'http://yandex.ru/products/5');
         $this->assertNull($transport->pop());
 
-        $message = new Message('', 'Hello!', new UrlTemplate('products/:id', ['id' => '%product_id%']));
+        $message = new Message('', 'Hello!', new UrlTemplate('products/:id', ['id' => '5']));
         $recipient->notify($message);
 
-        $this->assertEquals(strval($transport->pop()->getLink()), 'http://yandex.ru/products/:id');
+        $this->assertEquals(strval($transport->pop()->getLink()), 'http://yandex.ru/products/5');
         $this->assertNull($transport->pop());
 
     }

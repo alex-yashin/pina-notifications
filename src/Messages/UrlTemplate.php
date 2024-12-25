@@ -28,7 +28,12 @@ class UrlTemplate extends Url
 
     public function __toString()
     {
-        return App::link($this->url);
+        foreach  ($this->params as $v) {
+            if ($this->hasUnreplaced($v)) {
+                throw new \Exception('Недостаточно данных для шаблона');
+            }
+        }
+        return App::link($this->url, $this->params);
     }
 
 }
