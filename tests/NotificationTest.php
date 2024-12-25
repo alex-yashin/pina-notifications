@@ -44,6 +44,13 @@ class NotificationTest extends TestCase
         $this->assertEquals($transport->pop()->getText(), 'Hello, my darling');
         $this->assertNull($transport->pop());
 
+        $template = new MessageTemplate('', 'Hello, %name%');
+        $template->setData(['name' => 'my darling']);
+        $recipient->notify($template);
+
+        $this->assertEquals($transport->pop()->getText(), 'Hello, my darling');
+        $this->assertNull($transport->pop());
+
         $userRecipient = new UserRecipient(1);
         $userRecipient->notify($message);
 
