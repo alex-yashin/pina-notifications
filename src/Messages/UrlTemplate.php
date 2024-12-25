@@ -26,4 +26,9 @@ class UrlTemplate extends Url
         return new Url(App::link($this->url, $params));
     }
 
+    public function __toString()
+    {
+        return App::link($this->url);
+    }
+
 }
