@@ -11,7 +11,7 @@ class Message
     protected $text = '';
     protected $link;
 
-    public function __construct(string $title, string $text, Url $link = null)
+    public function __construct(string $title, string $text, ?Url $link = null)
     {
         $this->title = $title;
         $this->text = $text;
